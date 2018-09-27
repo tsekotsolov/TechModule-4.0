@@ -1,5 +1,4 @@
 function login (arr = []) {
-
   let username = arr.shift()
   let pass = username.split('').reverse().join('')
   let isLogged = false
