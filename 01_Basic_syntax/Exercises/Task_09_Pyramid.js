@@ -5,7 +5,7 @@ function pyramid (base, increment) {
   let currentStone = (base - 2) ** 2
 
   for (let i = 1; i <= steps - 1; i++) {
-    if (i % 5 != 0) {
+    if (i % 5 !== 0) {
       currentStone = (base - 2) ** 2
       stone += currentStone * increment
       marble += (base ** 2 - currentStone) * increment
