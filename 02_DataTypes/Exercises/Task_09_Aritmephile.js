@@ -7,7 +7,7 @@ function artitmethile (input = []) {
     let s = input[i]
     if (s >= 1 && s <= 9) {
       let sectionArr = input.slice(i + 1, i + s + 1)
-      let product = sectionArr.reduce((a, b) => a * b)
+      let product = sectionArr.reduce((a, b) => a * b, 1)
       maxProduct.push(product)
     }
   }
