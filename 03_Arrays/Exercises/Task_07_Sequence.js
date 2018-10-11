@@ -20,12 +20,12 @@ function solve (input) {
   }).shift()
 
   let timeToRepeat = (Object.keys(maxSeqObj)[0])
-  let ToRepeat = maxSeqObj[timeToRepeat]
+  let valueToRepeat = maxSeqObj[timeToRepeat]
 
   let result = []
 
   for (let i = 0; i < timeToRepeat; i++) {
-    result.push(ToRepeat)
+    result.push(valueToRepeat)
   }
 
   console.log(result.join(' '))
