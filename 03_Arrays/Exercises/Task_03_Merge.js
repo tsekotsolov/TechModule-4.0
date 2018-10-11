@@ -7,7 +7,6 @@ function solve (firstArr, secondArr) {
       result.push(firstArr[i] + secondArr[i])
     }
   }
-
   console.log(result.join(' - '))
 }
 
