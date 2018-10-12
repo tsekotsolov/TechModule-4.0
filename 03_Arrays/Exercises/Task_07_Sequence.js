@@ -27,7 +27,6 @@ function solve1 (input) {
   for (let i = 0; i < timeToRepeat; i++) {
     result.push(valueToRepeat)
   }
-
   console.log(result.join(' '))
 }
 
