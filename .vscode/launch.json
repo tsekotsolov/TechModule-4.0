@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/03_Arrays\\Exercises\\Task_10_LadyBugs.js"
+      "program": "${file}"
     }
   ]
 }
