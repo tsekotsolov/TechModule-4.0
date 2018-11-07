@@ -1,10 +1,10 @@
 function solve (input) {
-  let fieldLength = input.shift()
-  let positionsOfBugs = input.shift().split(' ').map(Number)
-  let commands = input
+  const fieldLength = input.shift()
+  const positionsOfBugs = input.shift().split(' ').map(Number)
+  const commands = input
 
   // Setting up the field
-  let field = []
+  const field = []
   for (let i = 0; i < fieldLength; i++) {
     field.push(0)
   }
