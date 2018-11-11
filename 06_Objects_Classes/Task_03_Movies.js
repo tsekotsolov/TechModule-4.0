@@ -1,25 +1,24 @@
-function solve(input) {
-  const movieDb = [];
+function solve (input) {
+  const movieDb = []
   for (let data of input) {
     if (data.startsWith('add')) {
-      const movieTitle = data.split('add movie ').filter(Boolean).shift();
+      const movieTitle = data.split('add movie ').filter(Boolean).shift()
       movieDb.push(movie = { name: movieTitle })
     } else if (data.includes('directed by')) {
-      const [movieTitle, director] = data.split(' directed by ');
-      movieDb.forEach(movie => movie.name === movieTitle ? movie.director = director : movie.director);
+      const [movieTitle, director] = data.split(' directed by ')
+      movieDb.forEach(movie => movie.name === movieTitle ? movie.director = director : movie.director)
     } else {
-      const [movieTitle, date] = data.split(' on date ');
-      movieDb.forEach(movie => movie.name === movieTitle ? movie.date = date : movie.date);
+      const [movieTitle, date] = data.split(' on date ')
+      movieDb.forEach(movie => movie.name === movieTitle ? movie.date = date : movie.date)
     }
   }
   console.log(
     movieDb
-    .filter(movie => movie.name && movie.director && movie.date)
-    .map(movie => JSON.stringify(movie))
-    .join('\n')
-  );
+      .filter(movie => movie.name && movie.director && movie.date)
+      .map(movie => JSON.stringify(movie))
+      .join('\n')
+  )
 }
-
 
 solve([
   'add movie Fast and Furious',
@@ -32,4 +31,4 @@ solve([
   'Fast and Furious directed by Rob Cohen',
   'add movie Fast and Furious',
   'Fast and Furious directed by Rob Cohen'
-]);
+])
