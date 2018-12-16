@@ -13,7 +13,7 @@ module.exports = {
     const author = req.body.author
     const price = Number(req.body.price)
     Book.create({title, author, price})
-      .then(() => res.redirect('/'))
+      .then(_ => res.redirect('/'))
       .catch((err) => {
         console.log(err)
         res.redirect('/')
@@ -30,7 +30,7 @@ module.exports = {
     const author = req.body.author
     const price = Number(req.body.price)
     Book.findByIdAndUpdate(id, {title, author, price})
-      .then(() => res.redirect('/'))
+      .then(_ => res.redirect('/'))
       .catch(err => console.log(err))
   },
   getDelete: (req, res) => {
@@ -42,7 +42,7 @@ module.exports = {
   postDelete: (req, res) => {
     const id = req.params.id
     Book.findByIdAndDelete(id)
-      .then(() => res.redirect('/'))
+      .then(_ => res.redirect('/'))
       .catch(err => console.log(err))
   }
 }

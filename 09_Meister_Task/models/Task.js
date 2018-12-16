@@ -9,6 +9,7 @@ const taskSchema = new mongoose.Schema({
     reqired: true,
     enum: ['In Progress', 'Finished', 'Open']
   }
+
 })
 
 const Task = mongoose.model('Tasks', taskSchema)
