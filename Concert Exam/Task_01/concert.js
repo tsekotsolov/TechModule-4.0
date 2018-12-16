@@ -1,53 +1,47 @@
 function solve (input = []) {
-  let bandsTime = {}
+  let bandsPerformanceDuration = {}
   let bandsMembers = {}
 
   const bandToPrint = input.pop()
 
   for (const line of input) {
+    const info = line.split('; ')
+    const bandName = info[1]
     if (line.startsWith('Play')) {
-      let info = line.split('; ')
-      const bandName = info[1]
-      const playTime = info[2]
-      if (!bandsTime.hasOwnProperty(bandName)) {
-        bandsTime[bandName] = Number(playTime)
-      } else {
-        let currentTime = bandsTime[bandName]
-        bandsTime[bandName] = currentTime + Number(playTime)
+      const duration = info[2]
+      if (!bandsPerformanceDuration.hasOwnProperty(bandName)) {
+        bandsPerformanceDuration[bandName] = 0
       }
+      const currentTime = bandsPerformanceDuration[bandName]
+      bandsPerformanceDuration[bandName] = currentTime + Number(duration)
     } else if (line.startsWith('Add')) {
-      const info = line.split('; ')
-      const bandName = info[1]
-      let bandMembers = info[2].split(', ')
-      const uniqueMembers = bandMembers.filter((v, i, a) => a.indexOf(v) === i)
+      const bandMembers = info[2].split(', ').filter((v, i, a) => a.indexOf(v) === i)
 
       if (!bandsMembers.hasOwnProperty(bandName)) {
-        bandsMembers[bandName] = uniqueMembers
-      } else {
-        let currentMembers = bandsMembers[bandName]
-        for (const member of bandMembers) {
-          if (!currentMembers.includes(member)) {
-            currentMembers.push(member)
-          }
+        bandsMembers[bandName] = []
+      }
+      const currentMembers = bandsMembers[bandName]
+      for (const member of bandMembers) {
+        if (!currentMembers.includes(member)) {
+          currentMembers.push(member)
         }
       }
     }
   }
 
-  const totalTime = Object.values(bandsTime).reduce((a, b) => a + b)
-  console.log(`Total time: ${totalTime}`)
+  const totalDuration = Object.values(bandsPerformanceDuration).reduce((a, b) => a + b)
+  console.log(`Total time: ${totalDuration}`)
 
-  const sortedBands = Object.keys(bandsTime)
+  const sortedBands = Object.keys(bandsPerformanceDuration)
     .sort((a, b) => {
-      if (bandsTime[a] !== bandsTime[b]) {
-        return bandsTime[b] - bandsTime[a]
-      } else {
-        return a.localeCompare(b)
+      if (bandsPerformanceDuration[a] !== bandsPerformanceDuration[b]) {
+        return bandsPerformanceDuration[b] - bandsPerformanceDuration[a]
       }
+      return a.localeCompare(b)
     })
 
   for (const band of sortedBands) {
-    console.log(`${band} -> ${bandsTime[band]}`)
+    console.log(`${band} -> ${bandsPerformanceDuration[band]}`)
   }
 
   console.log(bandToPrint)
@@ -68,12 +62,12 @@ solve([
   'The Rolling Stones']
 )
 
-// solve([
-//   'Add; The Beatles; John Lennon, Paul McCartney',
-//   'Add; The Beatles; Paul McCartney, George Harrison',
-//   'Add; The Beatles; George Harrison, Ringo Starr',
-//   'Play; The Beatles; 3698',
-//   'Play; The Beatles; 3828',
-//   'start of concert',
-//   'The Beatles'
-// ])
+solve([
+  'Add; The Beatles; John Lennon, Paul McCartney',
+  'Add; The Beatles; Paul McCartney, George Harrison',
+  'Add; The Beatles; George Harrison, Ringo Starr',
+  'Play; The Beatles; 3698',
+  'Play; The Beatles; 3828',
+  'start of concert',
+  'The Beatles'
+])
