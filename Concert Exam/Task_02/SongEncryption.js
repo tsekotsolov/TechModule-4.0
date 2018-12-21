@@ -1,6 +1,8 @@
 function solve (input = []) {
-  input.pop()
   for (const line of input) {
+    if (line === 'end') {
+      break
+    }
     const [artist, song] = line.split(':')
     const artistRegex = /^[A-Z][a-z \s']+$/gm
     const songRegex = /^[A-Z\s]+$/gm
